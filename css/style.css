@@ -1,0 +1,112 @@
+
+/*          HERO IMAGE        */
+/* Full-screen background container with blurred image */
+.bg-blur {
+    position: relative;
+    min-height: 100vh;
+    background-image: url('https://www.rider.edu/sites/default/files/2021-02/020521_SRC_08.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Blur the background image */
+.bg-blur::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(10px); /* Initial blur for the background */
+    transition: filter 0.5s ease-in-out; /* Smooth transition for blur */
+    z-index: 1;
+}
+
+.btn {
+    background-color: maroon;
+}
+.btn:hover {
+    outline: auto;
+color:rgb(79, 13, 13);
+}
+/* On hover, reduce the blur of the background */
+.hero-content:hover ~ .bg-blur::before {
+    filter: blur(4px); /* Slightly reduce blur when hovering */
+}
+
+/* Content box styling */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background: rgba(45, 44, 44, 0.41); /* Transparent black background */
+    border-radius: 15px;
+    width: 400px; /* Initial small width */
+    height: 350px; /* Initial height */
+    overflow: hidden;
+    transition: width 0.5s ease, height 0.5s ease, background 0.5s ease; /* Smooth transition */
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    align-items: center;
+}
+
+/* On hover, box grows */
+.hero-content:hover {
+    width: 500px; /* Expanded width */
+    height: 600px; /* Expanded height */
+    background: rgba(73, 0, 0, 0.8);
+    
+}
+
+/* Hide the extra info and button initially */
+.hero-content .extra-info,
+.hero-content .btn {
+    opacity: 0;
+    pointer-events: none; /* Prevent interaction */
+    transition: opacity 0.5s ease; /* Smooth fade-in effect */
+    color: rgb(255, 255, 255);
+}
+
+/* When expanded, show extra info and button */
+.hero-content:hover .extra-info,
+.hero-content:hover .btn {
+    opacity: 1;
+    pointer-events: auto; /* Allow interaction */
+}
+
+/* Logo image styling */
+#logo2 {
+    width: 400px;
+    height: 300px;
+}
+
+/* Title on top of blurred background */
+.title-overlay1 {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: rgb(104, 0, 0);
+    font-size: 10rem;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional shadow for visibility */
+}
+.title-overlay2 {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 10rem;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional shadow for visibility */
+}
